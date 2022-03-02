@@ -1,11 +1,11 @@
 import streamlit as st
-import cv2 as cv
+import cv2
 from PIL import Image
 import os
 
 
 template_path = 'Certificate.png'
-font = cv.FONT_HERSHEY_COMPLEX
+font = cv2.FONT_HERSHEY_COMPLEX
 font_size = 2
 font_color = (0,0,0)
 
@@ -27,11 +27,11 @@ if submit:
         #certi_name = input("Enter your name:")
 
         # read the certificate template
-        img = cv.imread(template_path)
+        img = cv2.imread(template_path)
                                             
 
         # get the size of the name to be printed
-        text_size = cv.getTextSize(certi_name, font, font_size, 5)[0]     
+        text_size = cv2.getTextSize(certi_name, font, font_size, 5)[0]     
 
         # get the (x,y) coordinates where the
         # name is to written on the template
@@ -41,7 +41,7 @@ if submit:
         text_y = (img.shape[0] + text_size[1]) / 2 - coordinate_y_adjustment
         text_x = int(text_x)
         text_y = int(text_y)
-        cv.putText(img, certi_name,
+        cv2.putText(img, certi_name,
                 (text_x ,text_y ), 
                 font,
                 font_size,
@@ -52,7 +52,7 @@ if submit:
         certi_path ='certi' + '.png'
         
         # Save the certificate                      
-        cv.imwrite(certi_path, img)
+        cv2.imwrite(certi_path, img)
 
         st.write("")
         image = Image.open('certi.png')
