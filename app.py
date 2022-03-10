@@ -5,7 +5,7 @@ import os
 
 
 template_path = 'Certificate.png'
-font = cv2.FONT_HERSHEY_COMPLEX
+#font = cv2.FONT_HERSHEY_COMPLEX
 font_size = 2
 font_color = (0,0,0)
 
@@ -17,13 +17,25 @@ coordinate_y_adjustment = 25
 coordinate_x_adjustment = 5
 
 st.title("Certificate Center")
+
 name = st.text_input('Enter your name')
+
+font_f = st.selectbox(
+    "Select Font:",
+    (cv2.FONT_HERSHEY_SIMPLEX, cv2.FONT_HERSHEY_PLAIN, cv2.FONT_HERSHEY_DUPLEX, cv2.FONT_HERSHEY_COMPLEX, cv2.FONT_HERSHEY_TRIPLEX, cv2.FONT_HERSHEY_COMPLEX_SMALL, cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, cv2.FONT_HERSHEY_SCRIPT_COMPLEX)
+    )
+font_size = st.selectbox(
+    "Select Font size:",
+    (1,2,3,4,5)
+)
+
 submit = st.button("Submit")
 if submit:
     if name=="":
         st.error("Please enter your Name")
     else:
         certi_name = name
+        font = font_f
         #certi_name = input("Enter your name:")
 
         # read the certificate template
