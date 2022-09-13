@@ -50,7 +50,7 @@ uploaded_file = st.file_uploader("Upload file:", ['png', 'jpg'])
 
 submit = st.button("Submit")
 if submit:
-    if name=="" and uploaded_file is None:
+    if name=="" or uploaded_file is None:
         st.error("Please enter your Name/ Upload Sample certificate")
     else:
         if font_f == "Normal size sans-serif font":
